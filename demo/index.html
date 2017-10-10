@@ -50,12 +50,20 @@
       </p>
       <paper-dropdown-input label="Your favorite dinosaur" items='[[simpleItems]]'></paper-dropdown-input>
 
+      <h3>Basic input</h3>
+      <p>
+        Paper-dropdown-input takes a parameter 'items', which must be an array of strings or an array of objects.
+        the objects must contain either a `value` property, or a property with a name of your chosing via `filterProperty`
+        The dropdown can be configured to close on select or stay open.
+      </p>
+      <paper-dropdown-input label="Your favorite dinosaur" items='[[simpleItems]]' ignore-select></paper-dropdown-input>
+
       <h3>Custom template</h3>
       <p>
         It's possible to customise the dropdown menu to your taste. Provide a template tag containing your custom layout,
         it will receive a variable 'items', containing all items after filtering.
       </p>
-      <paper-dropdown-input label="Your favorite dinosaur" items='[[complexItems]]' filter-property=dinoName>
+      <paper-dropdown-input label="Your favorite dinosaur" items='[[complexItems]]' filter-property=dinoName ignore-select="true" close-on-activate="true">
         <template>
           <p disabled>Carnivores</p>
           <template is="dom-repeat" items="[[_getCarnivores(items)]]" as="item">

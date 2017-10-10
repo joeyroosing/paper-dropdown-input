@@ -153,7 +153,8 @@ respectively.
       on-iron-select="_onIronSelect"
       on-iron-deselect="_onIronDeselect"
       opened="{{opened}}"
-      close-on-activate
+      close-on-activate="[[closeOnActivate]]"
+      ignore-select="[[ignoreSelect]]"
       no-overlap
       allow-outside-scroll="[[allowOutsideScroll]]"
       restore-focus-on-close="[[restoreFocusOnClose]]">
@@ -489,6 +490,24 @@ respectively.
           },
 
           /**
+           * passed to paper-menu-button.
+           * https://www.webcomponents.org/element/PolymerElements/paper-menu-button/paper-menu-button#property-selectable
+           */    
+          closeOnActivate: {
+            type: Boolean,
+            value: false
+          },
+
+          /**
+           * passed to paper-menu-button.
+           * https://www.webcomponents.org/element/PolymerElements/paper-menu-button/paper-menu-button#property-selectable
+           */
+          ignoreSelect: {
+            type: Boolean,
+            value: false
+          },
+
+          /**
            * disables search, making it more like a regular dropdown.
            */
           noSearch: {
@@ -650,9 +669,6 @@ respectively.
           }
         },
 
-
-
-
         _focusSearch: function() {
           this.$.searchInput.focus();
           this.$.searchInput.select();
@@ -670,7 +686,7 @@ respectively.
               return;
             }
             if (!this.ignoreSelect) {
-              this.$.menuButton.close();
+              //this.$.menuButton.close();
             }
           }.bind(this);
 
